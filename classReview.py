@@ -29,6 +29,8 @@ class ClassReview:
             return 18
         elif timeState == "VHI":
             return 30
+        else:
+            return -999
 
     def _convertTimeString(self):
         LO = "0-5 hours"
