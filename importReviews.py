@@ -6,7 +6,7 @@ from classReview import ClassReview
 class ImportReviews:
     def __init__(self, file):
         self.file = file
-        self.reviewList = self.csvToArray()
+        self.list = self.csvToArray()
 
     def _getIndices(self, headerList, matchString):
         indices = []
