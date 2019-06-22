@@ -9,14 +9,14 @@ class ClassStats:
         self.courseName = courseName
         self.reviewListAll = ImportReviews(file).list
         self.courseReviews = self.courseReviewList()
-        self.timeMinValues = self.getTime("min")  # TODO: TEST
-        self.timeMaxValues = self.getTime("max")  # TODO: TEST
-        self.timeMinMean = mean(self.timeMinValues)  # TODO: TEST
-        self.timeMinMedian = median(self.timeMinValues)  # TODO: TEST
-        self.timeMaxMean = mean(self.timeMaxValues)  # TODO: TEST
-        self.timeMaxMedian = median(self.timeMaxValues)  # TODO: TEST
-        # self.timeTotalMean = #TODO: FINISH/IMPLEMENT
-        # self.timeMostCommon = #TODO: FINISH/IMPLEMENT
+        self.timeMinValues = self.getTime("min")
+        self.timeMaxValues = self.getTime("max")
+        self.timeMinMean = mean(self.timeMinValues)
+        self.timeMinMedian = median(self.timeMinValues)
+        self.timeMaxMean = mean(self.timeMaxValues)
+        self.timeMaxMedian = median(self.timeMaxValues)
+        self.timeTotalMean = mean([self.timeMinMean, self.timeMaxMean])
+        self.timeMostCommon = self.getMostCommonTimeStrings()
         self.difficultyScores = self.getScores()
         self.difficultyMean = mean(self.difficultyScores)
         self.difficultyMedian = median(self.difficultyScores)
@@ -34,7 +34,6 @@ class ClassStats:
             difficultyScoreList.append(int(review.difficulty))
         return difficultyScoreList
 
-    #TODO: TEST
     def getTime(self, quantityDescriptor):
         numList = []
         for review in self.courseReviews:
@@ -44,16 +43,25 @@ class ClassStats:
                 numList.append(int(review.timeMax))
         return numList
 
+    def getTimeStrings(self):
+        timeCommittments = []
+        for review in self.courseReviews:
+            timeCommittments.append(review.time)
+        return timeCommittments
 
-# SET DATA DIRECTORY
-DIR = './data'
-FILE = '/Course Reviews (Responses) - Form Responses 1.csv'
-file = '{}{}'.format(DIR, FILE)
+    def getMostCommonTimeStrings(self):
+        timeStrings = self.getTimeStrings()
+        mostCommon = [word for word in Counter(timeStrings).most_common()]
+        return mostCommon[0][0]
+
+# # TEST
+# # SET DATA DIRECTORY
+# DIR = './data'
+# FILE = '/Course Reviews (Responses) - Form Responses 1.csv'
+# file = '{}{}'.format(DIR, FILE)
 
 # courseName = "CS 271 - Computer Architecture & Assembly Language"
 
 # CS271 = ClassStats(file, courseName)
 
-# print(CS271.difficultyScores)
-# print(CS271.difficultyMean)
-# print(CS271.difficultyMedian)
+# print(CS271.getMostCommonTimeStrings())
