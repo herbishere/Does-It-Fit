@@ -1,5 +1,6 @@
 from classStats import ClassStats
 from statistics import mean
+from classCourse import Course
 
 
 class Schedule:
@@ -11,6 +12,12 @@ class Schedule:
         self.difficulty = 0
         self.hoursAvailable = 0
         self.scheduleOK = False
+
+    def _noDuplications(self, inputClass):
+        for course in self.classes:
+            if inputClass == course:
+                return False
+        return True
 
     def _calcMinimumHours(self):
         hours = 0
