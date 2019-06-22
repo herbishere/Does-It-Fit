@@ -9,12 +9,14 @@ class ClassStats:
         self.courseName = courseName
         self.reviewListAll = ImportReviews(file).list
         self.courseReviews = self.courseReviewList()
-        # self.hoursMinMean =
-        # self.hoursMinMedian =
-        # self.hoursMaxMean =
-        # self.hoursMaxMedian =
-        # self.hoursTotalMean =
-        # self.hoursMostCommon =
+        self.timeMinValues = self.getTime("min")  # TODO: TEST
+        self.timeMaxValues = self.getTime("max")  # TODO: TEST
+        self.timeMinMean = mean(self.timeMinValues)  # TODO: TEST
+        self.timeMinMedian = median(self.timeMinValues)  # TODO: TEST
+        self.timeMaxMean = mean(self.timeMaxValues)  # TODO: TEST
+        self.timeMaxMedian = median(self.timeMaxValues)  # TODO: TEST
+        # self.timeTotalMean = #TODO: FINISH/IMPLEMENT
+        # self.timeMostCommon = #TODO: FINISH/IMPLEMENT
         self.difficultyScores = self.getScores()
         self.difficultyMean = mean(self.difficultyScores)
         self.difficultyMedian = median(self.difficultyScores)
@@ -32,16 +34,26 @@ class ClassStats:
             difficultyScoreList.append(int(review.difficulty))
         return difficultyScoreList
 
+    #TODO: TEST
+    def getTime(self, quantityDescriptor):
+        numList = []
+        for review in self.courseReviews:
+            if quantityDescriptor == "min":
+                numList.append(int(review.timeMin))
+            elif quantityDescriptor == "max":
+                numList.append(int(review.timeMax))
+        return numList
+
 
 # SET DATA DIRECTORY
 DIR = './data'
 FILE = '/Course Reviews (Responses) - Form Responses 1.csv'
 file = '{}{}'.format(DIR, FILE)
 
-courseName = "CS 271 - Computer Architecture & Assembly Language"
+# courseName = "CS 271 - Computer Architecture & Assembly Language"
 
-CS271 = ClassStats(file, courseName)
+# CS271 = ClassStats(file, courseName)
 
-print(CS271.difficultyScores)
-print(CS271.difficultyMean)
-print(CS271.difficultyMedian)
+# print(CS271.difficultyScores)
+# print(CS271.difficultyMean)
+# print(CS271.difficultyMedian)
