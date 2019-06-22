@@ -12,6 +12,7 @@ class Schedule:
         self.meanHours = 0
         self.difficulty = 0
         self.hoursAvailable = 0
+        self.isSummer = False
 
     def _noDuplications(self, inputClass):
         for course in self.classes:
@@ -21,7 +22,7 @@ class Schedule:
 
     def addClass(self, courseName):
         if self._noDuplications(courseName):
-            course = ClassStats(self.file, course)
+            course = ClassStats(self.file, courseName)
             self.classes.append(course)
             self.recalculateData()
             return True
@@ -65,7 +66,7 @@ class Schedule:
         self.maximumHours = self._calcMaxHours()
 
     def _calcMeanHours(self):
-        return mean([self.maximumHours, self.maximumHours])
+        return mean([self.minimumHours, self.maximumHours])
 
     def _setMeanHours(self):
         self.meanHours = self._calcMeanHours()
@@ -87,3 +88,21 @@ class Schedule:
 
     def setHoursAvailable(self, hours):
         self.hoursAvailable = hours
+
+
+# # TEST
+# # SET DATA DIRECTORY
+# DIR = './data'
+# FILE = '/Course Reviews (Responses) - Form Responses 1.csv'
+# file = '{}{}'.format(DIR, FILE)
+
+# classes = Course()
+# mySched = Schedule(file)
+# mySched.addClass(classes.CS340)
+# mySched.addClass(classes.CS325)
+
+# for course in mySched.classes:
+#     print(course.courseName)
+# print("minHours:", mySched.minimumHours)
+# print("maxHours:", mySched.maximumHours)
+# print("meanHours:", mySched.meanHours)
