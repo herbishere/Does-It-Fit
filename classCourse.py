@@ -18,7 +18,6 @@ class Course:
         self.CS372 = "CS 372 - Intro to Computer Networks"
         self.CS373 = "CS 373 - Defense Against the Dark Arts"
         # self.CS391 = "CS 391 - Social and Ethical Issues in Computer Science"
-        self.CS419 = "CS 419/467 - Software Projects"
         # self.CS427 = "CS 427 - Cryptography"
         self.CS464 = "CS 464 - Open Source Software"
         self.CS467 = "CS 419/467 - Software Projects"
