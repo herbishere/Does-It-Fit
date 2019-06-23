@@ -52,8 +52,6 @@ class Schedule:
                 hours += course.timeMinMean
             elif minMax == "max":
                 hours += course.timeMaxMean
-        if self.isSummer == True:
-            hours *= SUMMERMULTIPLIER
         return hours
 
     def _calcMinHours(self):
