@@ -45,12 +45,15 @@ class Schedule:
         self.difficulty = 0
 
     def _calcHours(self, minMax):
+        SUMMERMULTIPLIER = 1.25
         hours = 0
         for course in self.classes:
             if minMax == "min":
                 hours += course.timeMinMean
             elif minMax == "max":
                 hours += course.timeMaxMean
+        if self.isSummer == True:
+            hours *= SUMMERMULTIPLIER
         return hours
 
     def _calcMinHours(self):
@@ -88,6 +91,15 @@ class Schedule:
 
     def setHoursAvailable(self, hours):
         self.hoursAvailable = hours
+
+    def setIsSummer(self, isSummerBool):
+        self.isSummer = isSummerBool
+
+    def isSummerSwitch(self):
+        if self.isSummer == False:
+            self.isSummer = True
+        else:
+            self.isSummer = False
 
 
 # # TEST
