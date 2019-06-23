@@ -1,6 +1,7 @@
 from classStats import ClassStats
 from statistics import mean
 from classCourse import Course
+import datetime
 
 
 class Schedule:
@@ -12,7 +13,6 @@ class Schedule:
         self.meanHours = 0
         self.difficulty = 0
         self.hoursAvailable = 0
-        self.isSummer = False
 
     def _noDuplications(self, inputClass):
         for course in self.classes:
@@ -92,15 +92,6 @@ class Schedule:
     def setHoursAvailable(self, hours):
         self.hoursAvailable = hours
 
-    def setIsSummer(self, isSummerBool):
-        self.isSummer = isSummerBool
-
-    def isSummerSwitch(self):
-        if self.isSummer == False:
-            self.isSummer = True
-        else:
-            self.isSummer = False
-
     def isScheduleOK(self):
         YES = "You WILL sleep. You should be able to handle this schedule!"
         MAYBE_YES = "Some weeks might be a rough, but it should be manageable."
@@ -114,6 +105,15 @@ class Schedule:
             return MAYBE_NO
         else:
             return NO
+            
+    def isSummer(self):
+        curDate = datetime.datetime.now()
+        minRange = datetime.datetime(day=1, month=4, year=1990)
+        maxRange = datetime.datetime(day=30, month=7, year=1990)
+        if (curDate.month >= minRange.month) and (curDate.month <= maxRange.month) :
+            return True
+        else:
+            return False
 
 
 # # TEST
