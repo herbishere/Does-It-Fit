@@ -54,14 +54,17 @@ while True:
     if button is None:
         break
     # logic for output
-    #keys = userHours, hasSummer, class1, class2, class3, class4
+    # keys = userHours, hasSummer, class1, class2, class3, class4
     # TODO: case where <4 courses selected, disable button if same courses selected, bring in isSummer function for default value
-    hoursAvailable = float(values['userHours'])
+    # CHECK IF VALUE IS A DIGIT
+    hoursAvailable = -1
+    if values['userHours'].isdigit():
+        hoursAvailable = float(values['userHours'])
     exists1, exists2, exists3, exists4 = values['class1'], values['class2'], values['class3'], values['class4']
-    #first_class = ClassStats(file, str(values['class1']))
-    #second_class = ClassStats(file, values['class2'])
-    #third_class = ClassStats(file, values['class3'])
-    #fourth_class = ClassStats(file, values['class4'])
+    # first_class = ClassStats(file, str(values['class1']))
+    # second_class = ClassStats(file, values['class2'])
+    # third_class = ClassStats(file, values['class3'])
+    # fourth_class = ClassStats(file, values['class4'])
     summer_multiplier = 1.0
     class_total_mean = 0.0
     class_uno = ''
