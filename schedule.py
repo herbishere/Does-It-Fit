@@ -101,6 +101,20 @@ class Schedule:
         else:
             self.isSummer = False
 
+    def isScheduleOK(self):
+        YES = "You WILL sleep. You should be able to handle this schedule!"
+        MAYBE_YES = "Some weeks might be a rough, but it should be manageable."
+        MAYBE_NO = "This WILL be rough. Consider changing your schedule."
+        NO = "You WILL NOT sleep. Change your schedule."
+        if self.hoursAvailable >= self.maximumHours:
+            return YES
+        elif self.hoursAvailable >= self.meanHours:
+            return MAYBE_YES
+        elif self.hoursAvailable >= self.minimumHours:
+            return MAYBE_NO
+        else:
+            return NO
+
 
 # # TEST
 # # SET DATA DIRECTORY
@@ -112,9 +126,11 @@ class Schedule:
 # mySched = Schedule(file)
 # mySched.addClass(classes.CS340)
 # mySched.addClass(classes.CS325)
+# mySched.setHoursAvailable(24)
 
 # for course in mySched.classes:
 #     print(course.courseName)
 # print("minHours:", mySched.minimumHours)
 # print("maxHours:", mySched.maximumHours)
 # print("meanHours:", mySched.meanHours)
+# print(mySched.isScheduleOK())
