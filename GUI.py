@@ -112,3 +112,13 @@ while True:
         window.FindElement('class_cuatro').Update(class_cuatro)
     else:
         window.FindElement('errorHours').Update(visible=True)
+        answer = ''
+        class_uno = ''
+        class_dos = ''
+        class_tres = ''
+        class_cuatro = ''
+        window.FindElement('answer').Update(answer)
+        window.FindElement('class_uno').Update(class_uno)
+        window.FindElement('class_dos').Update(class_dos)
+        window.FindElement('class_tres').Update(class_tres)
+        window.FindElement('class_cuatro').Update(class_cuatro)
