@@ -23,7 +23,7 @@ def isSummer():
 if isSummer():
     isItSummer = True
 
-PySimpleGUI.ChangeLookAndFeel('SandyBeach')
+PySimpleGUI.ChangeLookAndFeel('Kayak')
 # ------ Menu Definition ------ #
 menu_def = [['File', ['Open', 'Save', 'Exit', 'Properties']],
             ['Edit', ['Paste', ['Special', 'Normal', ], 'Undo'], ],
@@ -40,7 +40,7 @@ column1 = [[PySimpleGUI.Text('Column 1', background_color='#F7F3EC', justificati
 layout = [
     [PySimpleGUI.Menu(menu_def, tearoff=True)],
     [PySimpleGUI.Text('Will I Sleep this Semester?', size=(
-        30, 1), justification='center', font=("Helvetica", 25), relief=PySimpleGUI.RELIEF_RIDGE)],
+        30, 1), justification='center', font=("Helvetica", 25), relief=PySimpleGUI.RELIEF_RIDGE, background_color="#D0420A", text_color="white")],
     [PySimpleGUI.Text('Total Hours for Class Each Week:'),
      PySimpleGUI.InputText('0', key='userHours', size=(4, 1)), PySimpleGUI.Text('ERROR: Invalid Input!', visible=False, text_color="red", key='errorHours')],
     [PySimpleGUI.Checkbox('Summer Semester?', size=(
@@ -65,21 +65,6 @@ DIR = './data'
 FILE = '/Course Reviews (Responses) - Form Responses 1.csv'
 file = '{}{}'.format(DIR, FILE)
 
-
-# def isSummer():
-#     curDate = datetime.datetime.now()
-#     minRange = datetime.datetime(day=1, month=4, year=1990)
-#     maxRange = datetime.datetime(day=30, month=7, year=1990)
-#     if (curDate.month >= minRange.month) and (curDate.month <= maxRange.month):
-#         return True
-#     else:
-#         return False
-
-
-# ### CHECK BOX IF CURRENTLY SUMMER #######
-# if isSummer():
-#     print("summer")
-#     window.FindElement('hasSummer').Update(default=True)
 
 while True:
     button, values = window.Read()
