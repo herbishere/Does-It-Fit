@@ -69,7 +69,7 @@ while True:
     class_tres = ''
     class_cuatro = ''
     if (values['hasSummer'] == True):
-        summer_multiplier = 1.75
+        summer_multiplier = 1.25
     else:
         summer_multiplier = 1.0
     if (exists1 != 'None'):
