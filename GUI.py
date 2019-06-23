@@ -24,7 +24,7 @@ layout = [
     [PySimpleGUI.Text('Will I Sleep this Semester?', size=(
         30, 1), justification='center', font=("Helvetica", 25), relief=PySimpleGUI.RELIEF_RIDGE)],
     [PySimpleGUI.Text('Total Hours for Class Each Week:'),
-     PySimpleGUI.InputText('0', key='userHours', size=(4, 1))],
+     PySimpleGUI.InputText('0', key='userHours', size=(4, 1)), PySimpleGUI.Text('ERROR: Invalid Input!', visible=False, text_color="red", key='errorHours')],
     [PySimpleGUI.Checkbox('Summer Semester?', size=(
         20, 1), key='hasSummer'), PySimpleGUI.Text('', key='answer', size=(40, 4))],
     [PySimpleGUI.Text('Class 1:')], [PySimpleGUI.InputCombo(('CS 161 - Intro to Computer Science I', 'CS 162 - Intro to Computer Science II', 'CS 165 - Intro to Computer Science (Accelerated)', 'CS 225 - Discrete Structures in Computer Science', 'CS 261 - Data Structures', 'CS 271 - Computer Architecture & Assembly Language', 'CS 290 - Web Development', 'CS 325 - Analysis of Algorithms', 'CS 340 - Introduction to Databases', 'CS 344 - Operating Systems',
@@ -103,8 +103,12 @@ while True:
     if (exists1 != 'None'):
         class_uno = (first_class.courseName + ': ' + '\nAverage Estimated Time Required: ' + str(int(first_class.timeTotalMean * summer_multiplier)) + '\xB1' + str(format(
             (first_class.timeTotalMean - first_class.timeMinMean)*summer_multiplier, '.1f')) + " hrs" + '\nAverage Expected Difficulty: ' + str(format(first_class.difficultyMean, '.1f')))
-    window.FindElement('answer').Update(answer)
-    window.FindElement('class_uno').Update(class_uno)
-    window.FindElement('class_dos').Update(class_dos)
-    window.FindElement('class_tres').Update(class_tres)
-    window.FindElement('class_cuatro').Update(class_cuatro)
+    if hoursAvailable >= 0 and isinstance(hoursAvailable, (int, float)):
+        window.FindElement('errorHours').Update(visible=False)
+        window.FindElement('answer').Update(answer)
+        window.FindElement('class_uno').Update(class_uno)
+        window.FindElement('class_dos').Update(class_dos)
+        window.FindElement('class_tres').Update(class_tres)
+        window.FindElement('class_cuatro').Update(class_cuatro)
+    else:
+        window.FindElement('errorHours').Update(visible=True)
