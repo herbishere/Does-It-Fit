@@ -4,6 +4,24 @@ from classReview import ClassReview
 from importReviews import ImportReviews
 from statistics import mean, median
 from collections import Counter
+import datetime
+
+# SUMMER CHECK
+isItSummer = False
+
+
+def isSummer():
+    curDate = datetime.datetime.now()
+    minRange = datetime.datetime(day=1, month=4, year=1990)
+    maxRange = datetime.datetime(day=30, month=7, year=1990)
+    if (curDate.month >= minRange.month) and (curDate.month <= maxRange.month):
+        return True
+    else:
+        return False
+
+
+if isSummer():
+    isItSummer = True
 
 PySimpleGUI.ChangeLookAndFeel('SandyBeach')
 # ------ Menu Definition ------ #
@@ -26,7 +44,7 @@ layout = [
     [PySimpleGUI.Text('Total Hours for Class Each Week:'),
      PySimpleGUI.InputText('0', key='userHours', size=(4, 1)), PySimpleGUI.Text('ERROR: Invalid Input!', visible=False, text_color="red", key='errorHours')],
     [PySimpleGUI.Checkbox('Summer Semester?', size=(
-        20, 1), key='hasSummer'), PySimpleGUI.Text('', key='answer', size=(40, 4))],
+        20, 1), key='hasSummer', default=isItSummer), PySimpleGUI.Text('', key='answer', size=(40, 4))],
     [PySimpleGUI.Text('Class 1:')], [PySimpleGUI.InputCombo(('CS 161 - Intro to Computer Science I', 'CS 162 - Intro to Computer Science II', 'CS 165 - Intro to Computer Science (Accelerated)', 'CS 225 - Discrete Structures in Computer Science', 'CS 261 - Data Structures', 'CS 271 - Computer Architecture & Assembly Language', 'CS 290 - Web Development', 'CS 325 - Analysis of Algorithms', 'CS 340 - Introduction to Databases', 'CS 344 - Operating Systems',
                                                              'CS 352 - Introduction to Usability Engineering', 'CS 361 - Software Engineering I', 'CS 362 - Software Engineering II', 'CS 372 - Intro to Computer Networks', 'CS 373 - Defense Against the Dark Arts', 'CS 464 - Open Source Software', 'CS 419/467 - Software Projects', 'CS 475 - Intro to Parallel Programming', 'CS 496 - Mobile and Cloud Software Development'), size=(30, 1), key='class1'), PySimpleGUI.Text('', key='class_uno', size=(44, 4))],
     [PySimpleGUI.Text('Class 2:')], [PySimpleGUI.InputCombo(('None', 'CS 161 - Intro to Computer Science I', 'CS 162 - Intro to Computer Science II', 'CS 165 - Intro to Computer Science (Accelerated)', 'CS 225 - Discrete Structures in Computer Science', 'CS 261 - Data Structures', 'CS 271 - Computer Architecture & Assembly Language', 'CS 290 - Web Development', 'CS 325 - Analysis of Algorithms', 'CS 340 - Introduction to Databases', 'CS 344 - Operating Systems',
@@ -47,6 +65,21 @@ DIR = './data'
 FILE = '/Course Reviews (Responses) - Form Responses 1.csv'
 file = '{}{}'.format(DIR, FILE)
 
+
+# def isSummer():
+#     curDate = datetime.datetime.now()
+#     minRange = datetime.datetime(day=1, month=4, year=1990)
+#     maxRange = datetime.datetime(day=30, month=7, year=1990)
+#     if (curDate.month >= minRange.month) and (curDate.month <= maxRange.month):
+#         return True
+#     else:
+#         return False
+
+
+# ### CHECK BOX IF CURRENTLY SUMMER #######
+# if isSummer():
+#     print("summer")
+#     window.FindElement('hasSummer').Update(default=True)
 
 while True:
     button, values = window.Read()

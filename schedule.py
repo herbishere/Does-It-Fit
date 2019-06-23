@@ -45,7 +45,6 @@ class Schedule:
         self.difficulty = 0
 
     def _calcHours(self, minMax):
-        SUMMERMULTIPLIER = 1.25
         hours = 0
         for course in self.classes:
             if minMax == "min":
@@ -103,12 +102,12 @@ class Schedule:
             return MAYBE_NO
         else:
             return NO
-            
+
     def isSummer(self):
         curDate = datetime.datetime.now()
         minRange = datetime.datetime(day=1, month=4, year=1990)
         maxRange = datetime.datetime(day=30, month=7, year=1990)
-        if (curDate.month >= minRange.month) and (curDate.month <= maxRange.month) :
+        if (curDate.month >= minRange.month) and (curDate.month <= maxRange.month):
             return True
         else:
             return False
