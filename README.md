@@ -1,4 +1,4 @@
-## Will I Sleep This Semester - An OSU PostBacc CS Schedule Calculator
+### Will I Sleep This Semester - An OSU PostBacc CS Schedule Calculator
 
 ## Inspiration
 The [OSU Course Explorer](https://osu-cs-course-explorer.com/) is a wonderful tool for getting the opinion of other students regarding the difficulty and time-commitment required for various courses. Despite that, lots of students still go on the slack and the subreddit to ask the question: Should I take theses classes together? With a desire to learn Python and a willingness to be challenged, we stepped up to solve this problem.
