@@ -36,8 +36,7 @@ Tools:
 - Implement course compatibility flags
 
 ## To Run
-On Windows:
-- Download PyInstaller.
-- Use PyInstaller on main.py.
-- Take main.exe from /dist folder and put in higher folder.
-- Run main.exe
+On Terminal Use Python 3 To Run main.py
+i.e. "python3 main.py" or "python main.py"
+
+NOTE: GUI only tested on Windows
